@@ -1,16 +1,11 @@
-# This is a sample Python script.
+from metro_parser import MetroParser
+from excel_writer import ExcelWriter
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+msc = 31
+spb = 16
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+metro = MetroParser()
+products = metro.parse_catalog(msc)
+ExcelWriter.write_products_to_excel(products, "metro_msc.xlsx")
+products = metro.parse_catalog(spb)
+ExcelWriter.write_products_to_excel(products, "metro_spb.xlsx")
